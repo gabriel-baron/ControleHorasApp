@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Controle de Horas no Trabalho</h1>
+  <button (click)="post()">POST</button>
+
+  <div class="content">
+    <div class="time-list">
+      <h2>Horas Registradas:</h2>
+      <div class="button-container">
+        <button (click)="toggleTimeEntry()">Marcar Ponto</button>
+      </div>
+      <ul>
+        <li *ngFor="let entry of timeEntries">
+          {{ formatDateString(entry.date) }} - Hora: {{ entry.time }} - Tipo: {{ entry.type }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="task-list">
+      <h2>Tarefas Realizadas:</h2>
+      <div class="task-controls">
+        <input type="text" [(ngModel)]="newTask">
+        <button type="button" (click)="addNewTask()">Adicionar Tarefa</button>
+      </div>
+      <div class="task-sugestions">
+        <ul>
+          <li *ngFor="let task of sugestionTasks">
+            <button type="button" (click)="addNewTask(task)">{{ task }}</button>
+          </li>
+        </ul>
+      </div>
+      <ul>
+        <li *ngFor="let task of tasks">
+          {{ task }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
